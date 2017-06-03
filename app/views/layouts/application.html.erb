@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socialapp</title>
+    <%= csrf_meta_tags %>
+	<%= stylesheet_link_tag "application", media: "all" %>
+	<%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <!-- <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+        <div class="container">
+            <%= link_to "Socialapp", root_url, class: "navbar-brand" %>
+            <div class="collapse navbar-collapse" id="navbarExample">
+                <ul class="navbar-nav ml-auto">
+                    <%- if current_user %>
+						<li class="nav-item" style="margin:15px">
+							<%= link_to "New Post", new_post_path %>
+						</li>
+						<li class="nav-item" style="margin:15px">
+							<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+						</li>
+					<% else %>
+						<li class="nav-item" style="margin:15px">
+							<%= link_to "Login", new_user_session_path %>
+						</li>
+						<li class="nav-item" style="margin:15px">
+							<%= link_to "Register", new_user_registration_path %>
+						</li>
+					<% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<!-- Page Content -->
+	<div class="container">
+        <div class="row">
+			<div class="col-lg-12 text-center">
+				<% flash.each do |a, b| %>
+					<div class="alert alert-success"> <%= b %> </div>
+				<% end %>
+				<%= yield %>
+			</div>
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+
+</body>
+
+</html>
