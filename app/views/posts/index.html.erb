@@ -1,8 +1,15 @@
 <% @posts.each do |x| %>
 		<div style="border:1px solid black;display: inline-block">
-			<%= image_tag x.image.url(:medium) %>
+			<div style="text-align: right">
+				<%= button_to "X", post_path(@posts.ids), method: :delete %>
+			</div>
+			<div style="text-align: center">
+				<%= image_tag x.image.url(:medium) %>
+			</div>
 			<br>
-			<%= x.description %>
+			<div style="text-align: left">
+				<%= x.description %>
+			</div>
 		</div>
 		<br><br>
 <% end %>
