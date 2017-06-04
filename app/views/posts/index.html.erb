@@ -1,15 +1,27 @@
-<% @posts.each do |x| %>
-		<div style="border:1px solid black;display: inline-block">
+<% unless user_signed_in? %>
+	<p style="text-align:left; font-style: italic; color:grey">Please login to create or delete posts</p>
+<% end %>
+
+<% @posts.reverse.each do |x| %>
+	<div style="border:1px solid black;display: inline-block">
+		
+		<!-- Delete post button (if signed in) -->
+		<% if user_signed_in? %>
 			<div style="text-align: right">
-				<%= button_to "X", post_path(@posts.ids), method: :delete %>
+				<%= button_to "X", x, method: :delete %>
 			</div>
-			<div style="text-align: center">
-				<%= image_tag x.image.url(:medium) %>
-			</div>
-			<br>
-			<div style="text-align: left">
-				<%= x.description %>
-			</div>
+		<% end %>
+		
+		<!-- Post description -->
+		<div style="text-align: left; padding-left: 10px; padding-right: 10px; padding-top: 5px">
+			<%= x.description %>
 		</div>
-		<br><br>
+		
+		<!-- Post image -->
+		<div style="text-align: center">
+			<%= image_tag x.image.url(:medium) %>
+		</div>
+			
+	</div>
+	<br><br>
 <% end %>

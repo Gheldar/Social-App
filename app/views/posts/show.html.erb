@@ -1,5 +1,10 @@
 <div style="border:1px solid black;display: inline-block">
-<%= image_tag(@post.image.url(:medium)) %>
-<br>
-<%= @post.description %>
+	<div style="text-align: left; padding-left: 10px; padding-right: 10px; padding-top: 5px">
+		<%= @post.description %>
+	</div>
+	<br>
+	<div style="text-align: center">
+		<%= image_tag(@post.image.url(:medium)) %>
+	</div>
 </div>
+

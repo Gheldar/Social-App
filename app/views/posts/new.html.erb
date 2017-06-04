@@ -2,12 +2,21 @@
 <hr>
 
 <%= form_for @post, html: { multipart: true } do |f| %>
-	<%= f.label :image %>
-	<%= f.file_field :image %>
-	<br>
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-	<br>
+	
+	<div style="float:left">
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+		<br>
+	</div>
+	
+	<div>
+		<%= f.label :description %>
+		<br>
+		<%= f.text_area :description %>
+	</div>
+		
+	<br><br>
+
 	<%= f.submit %>
 
 <% end %>

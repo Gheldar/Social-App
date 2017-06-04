@@ -25,6 +25,7 @@
 						<li class="nav-item" style="margin:15px">
 							<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 						</li>
+						
 					<% else %>
 						<li class="nav-item" style="margin:15px">
 							<%= link_to "Login", new_user_session_path %>
@@ -34,6 +35,11 @@
 						</li>
 					<% end %>
                 </ul>
+				<%- if current_user %>
+					<div class="nav-item" style="color: #9d9d9d; margin:15px; float:right">
+						Logged&ensp;<%= current_user.email %>
+					</div>
+				<% end %>
             </div>
         </div>
     </nav>
